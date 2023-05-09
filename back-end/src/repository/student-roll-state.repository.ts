@@ -9,13 +9,10 @@ export class StudentRollStateRepository extends Repository<StudentRollState> {
       let startDate = new Date();
       startDate.setTime(endDate.getTime() - (7 * number_of_weeks * 24 * 60 * 60 * 1000));
       /**
-       *  SELECT "s"."student_id" AS "s_student_id",
-          COUNT("s"."state") AS "incident_count"
-          FROM "student_roll_state" "s" INNER JOIN "roll" "r"  on s.roll_id = r.id
-          INNER JOIN "student" "student" on s.student_id = student.id
-          WHERE "s"."state" IN (?) AND "r"."completed_at" >= ?
-          AND "r"."completed_at" <= ?
-          GROUP BY "s"."student_id" HAVING COUNT("s"."state") > ?
+       *  SELECT student_id, COUNT("s"."state") AS "incident_count" FROM "student_roll_state" "s" INNER JOIN "roll" "r"
+          ON "s"."roll_id" = "r"."id"  INNER JOIN "student" "student" ON "s"."student_id" = "student"."id" WHERE "s"."state" 
+          IN (?, ?, ?) AND "r"."completed_at" >= ? AND "r"."completed_at" <= ? GROUP BY "s"."student_id" HAVING 
+          COUNT("s"."state") > ?;
        */
       const data = await this
         .createQueryBuilder('s')

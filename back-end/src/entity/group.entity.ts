@@ -41,13 +41,5 @@ export class Group {
       referencedColumnName: 'id'
     }
   })
-  // @JoinTable({
-  //   name: 'group_student',
-  //   joinColumn: {
-  //     name: "group_id",
-  //     referencedColumnName: "id",
-  //   }
-  // })
   students: Student[]
-
 }
