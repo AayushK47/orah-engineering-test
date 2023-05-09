@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, getRepository } from "typeorm"
 import { CreateStudentRollStateInput, UpdateStudentRollStateInput } from "../interface/student-roll-state.interface"
 
 @Entity()
@@ -15,6 +15,8 @@ export class StudentRollState {
   @Column()
   state: string
 
+  incident_count: number;
+
   public prepareToCreate(input: CreateStudentRollStateInput) {
     this.state = input.state
     this.student_id = input.student_id
@@ -26,4 +28,5 @@ export class StudentRollState {
     if (input.student_id !== undefined) this.student_id = input.student_id
     if (input.roll_id !== undefined) this.roll_id = input.roll_id
   }
+
 }

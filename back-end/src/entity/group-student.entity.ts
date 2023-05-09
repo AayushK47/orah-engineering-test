@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn } from "typeorm"
 
 @Entity()
 export class GroupStudent {
@@ -11,7 +11,7 @@ export class GroupStudent {
   @Column()
   group_id: number
 
-  @Column()
+  @Column({ default: 0 })
   incident_count: number
 
 
